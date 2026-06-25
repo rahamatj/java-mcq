@@ -4,12 +4,12 @@ public class Main {
     public static void main(String args[]) {
         Repo repo = new Repo();
         Scanner sc = new Scanner(System.in);
-        String correctAnswer = "";
+        String correctAnswer;
 
         for (int i = 0; i < repo.questions().length; i++) {
             Question question = repo.questions()[i];
             System.out.println(question.getQuestion());
-            correctAnswer = question.getCorrectAnswer().getAnswer();
+            correctAnswer = question.getCorrectAnswer().getAnswer().toLowerCase();
             
             for (int j = 0; j < repo.questions()[i].getAnswers().length; j++) {
                 String answer = repo.questions()[i].getAnswers()[j].getAnswer();
@@ -18,13 +18,10 @@ public class Main {
             }
 
             System.out.println("Enter your answer: ");
-            String answerInput = sc.nextLine();
+            String answerInput = sc.nextLine().toLowerCase();
 
-            if (answerInput.equals(correctAnswer)) {
-                System.out.println("Correct Answer!");
-            } else {
-                System.out.println("Wrong Answer!");
-            }
+            System.out.println("Your answer: " + answerInput);
+            System.out.println("Correct answer: " + correctAnswer);
         }
     }
 }
