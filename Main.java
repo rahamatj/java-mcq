@@ -5,23 +5,29 @@ public class Main {
         Repo repo = new Repo();
         Scanner sc = new Scanner(System.in);
         String correctAnswer;
+        int score = 0;
 
         for (int i = 0; i < repo.questions().length; i++) {
             Question question = repo.questions()[i];
             System.out.println(question.getQuestion());
-            correctAnswer = question.getCorrectAnswer().getAnswer().toLowerCase();
+            correctAnswer = question.getCorrectAnswer().getOption().toLowerCase();
             
             for (int j = 0; j < repo.questions()[i].getAnswers().length; j++) {
-                String answer = repo.questions()[i].getAnswers()[j].getAnswer();
+                String answer = repo.questions()[i].getAnswers()[j].getAnswerWithOption();
 
                 System.out.println(answer);
             }
 
             System.out.println("Enter your answer: ");
-            String answerInput = sc.nextLine().toLowerCase();
+            String answerInput = sc.nextLine().toLowerCase().trim();
 
-            System.out.println("Your answer: " + answerInput);
-            System.out.println("Correct answer: " + correctAnswer);
+            if (answerInput.equals(correctAnswer)) {
+                System.out.println("Correct answer!");
+                score++;
+            } else {
+                System.out.println("Wrong answer! The correct answer is: " + question.getCorrectAnswer().getAnswerWithOption());
+            }
         }
+        System.out.println("Your final score is: " + score);
     }
 }

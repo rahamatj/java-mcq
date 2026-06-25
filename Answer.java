@@ -8,10 +8,14 @@ public class Answer {
     }
 
     public String getAnswer() {
-        return " (" + this.option + ")" + this.answer;
+        return this.answer;
     }
 
     public String getOption() {
         return this.option;
+    }
+
+    public String getAnswerWithOption() {
+        return this.option + ". " + this.answer;
     }
 }
